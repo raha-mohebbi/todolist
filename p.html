@@ -1,0 +1,153 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to do list</title>
+</head>
+<body>
+<div class="windowbackground">
+    <div class="cadrbackground">
+        <h1>to do list</h1>
+<div class="aroundinputbox">
+    <input type="text" id="inputbox" placeholder="add your task">
+    <button class="addbutton" onclick="addtask()"><img src="icons8-add-64.png" alt="add"></button>
+</div>
+<ul id="tasks">
+   
+</ul>
+
+<!-- <button id="deletebuttonid" class="deletebutton" onclick="removetasks()"><img src="icons8-delete-button-64.png" alt="delete"></button> -->
+
+<!-- <button id="donebuttonid" class="donebutton" onclick="taskdone()"><img src="icons8-done-50.png" alt="done"></button> -->
+
+    </div>
+
+</div>
+<button id="nextpage id" class="nextpageclass"><img src="icons8-next-key-24.png" alt="next page"></button>
+</body>
+
+<style>
+ .windowbackground{
+   width: 100%; 
+   min-height: 100vh;
+   background-color:blue ;
+   padding: 10px;
+ }
+ .cadrbackground{
+    width:100%;
+    max-width:540;
+    background-color: blueviolet;
+    margin: 100px auto 20px;
+    padding: 40px 30px 70px;
+    border-radius: 10px;
+ }
+.cadrbackground h1{
+    color: crimson;
+    display: flex;
+    align-items: center;
+    margin-bottom:20px ;
+}
+.aroundinputbox{
+display: flex;
+align-items: center;
+justify-content: space-between;
+background-color: aqua;
+border-radius: 30px;
+padding-left: 20px;
+margin-bottom: 25px;
+}
+input{
+  flex:1 ; 
+  border: none; 
+  outline: none;
+  background: transparent;
+  padding: 10px;
+}
+.addbutton{
+    border: none;
+    outline: none;
+    padding: 16px 50px;
+    background:none ;
+    
+}
+ul li {
+   list-style: none; 
+   font-size: 17px;
+   padding: 12px 8px 12px 50px;
+   user-select: none;
+   cursor: pointer;
+}
+/* .deletebutton{
+    background: none;
+    border: none;
+    outline: none;
+  display: flex;
+  margin-left:292px;
+  cursor: pointer;
+} */
+/* .donebutton{
+    background: none;
+    border: none;
+    outline: none;
+ display: flex;
+ margin-left:300px;
+ cursor: pointer;
+} */
+.task-button{
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.task-button img{
+    width: 20px;
+    height: 20px;
+  
+}
+/* .nextpageclass{
+
+} */
+</style>
+
+<script>
+const myinputbox=document.getElementById("inputbox");
+const taskslist=document.getElementById("tasks");
+const removebutton= document.getElementById("deletebuttonid");
+const donebutton= document.getElementById("donebuttonid");
+function addtask(){
+    if (inputbox.value===''){
+        alert("please type a task");
+    }
+    else{
+        let li = document.createElement("li");
+li.innerHTML = myinputbox.value;
+
+let r = document.createElement("button");
+let removeicon = document.createElement("img");
+removeicon.src= "icons8-delete-button-64.png";
+removeicon.alt="Delete";
+r.appendChild(removeicon);
+r.classList.add("task-button");
+r.onclick=function(){
+    taskslist.removeChild(li);
+}
+
+let d= document.createElement("button");
+let doneicon= document.createElement("img");
+doneicon.src="icons8-done-50.png";
+doneicon.alt = "Done";
+d.appendChild(doneicon);
+d.classList.add('task-button');
+d.onclick=function(){
+li.style.textdecoration="line-through";
+}
+li.appendChild(d);
+li.appendChild(r);
+taskslist.appendChild(li);
+myinputbox.value="";
+
+    }
+}
+</script>
+</html>

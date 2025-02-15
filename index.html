@@ -1,0 +1,240 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to do list</title>
+</head>
+<body>
+    <div>
+        <form action="">
+            <input type="txt" placeholder="write your task">
+            <button type="submit"></button>
+        </form>
+    </div>
+    <div>
+        <ul class="tasklist"></ul>
+    </div>
+    <!-- <div class="div1">
+    <button id="1" class="button1" type="submit" onclick="fadd()"><img src="icons8-add-64.png" alt="add">
+       
+    </button>
+    <input id="2" class="input1" type="text" >
+</div> -->
+<div class="div2">
+    <button class="button2" onclick="fnextpage()" ><img src="icons8-next-key-24.png"></button>
+</div>
+<div>
+    <table class="tableclass">
+        <tr>
+            <td><input class="inputbox" type="text"></td>
+            <td><button class="button3" onclick="removetasks()"><img src="icons8-delete-button-64.png" alt="delete"></button></td>
+            <td><button class="button4" onclick="taskdone()"><img src="icons8-done-50.png" alt="done"></button></td>
+        </tr>
+    </table>
+    <!-- <input class="inputbox" type="text"  > -->
+    <!-- <button class="button3" onclick="removetasks()"><img src="icons8-delete-button-64.png" alt="delete"></button>
+    <button class="button4" onclick="taskdone()"><img src="icons8-done-50.png" alt="done"></button> -->
+</div> 
+   
+    <div class="daysbox" >
+        <label><input type="checkbox" id="saturday" value="شنبه"> شنبه</label>
+        <label><input type="checkbox" id="sunday" value="یکشنبه"> یکشنبه</label>
+        <label><input type="checkbox" id="monday" value="دوشنبه"> دوشنبه</label>
+        <label><input type="checkbox" id="tuesday" value="سه‌شنبه"> سه‌شنبه</label>
+        <label><input type="checkbox" id="wednesday" value="چهارشنبه"> چهارشنبه</label>
+        <label><input type="checkbox" id="thursday" value="پنج‌شنبه"> پنج‌شنبه</label>
+        <label><input type="checkbox" id="friday" value="جمعه"> جمعه</label>
+    
+   </div>
+
+<style>
+    
+    .input1{
+      display: inline-block;
+      vertical-align: middle;
+      height: 100px;
+      width: 700px; 
+    background-color: #FFCCFF;
+      border-radius: 10px;
+      font-size: 20px;
+    }
+    .button1 {
+      vertical-align: middle; 
+      position: fixed;
+      margin-top: 7px;
+      margin-left:805px;
+      background: none; 
+    border: none; 
+    cursor: pointer;
+    padding: 0;
+  }
+  .div1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100px;
+  
+  }
+  
+
+.tableclass{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 700px;
+    height: 30px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    margin-top: 50px; 
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.div2{
+    position: absolute;
+    right: 10px;
+    top: 3px;
+    
+  }
+.button3{
+margin-left: 100px;
+position: relative;
+background: none; 
+    border: none; 
+    cursor: pointer;
+    padding: 0;
+}
+.button4{
+    background: none; 
+    border: none; 
+    cursor: pointer;
+position: relative;
+padding: 0;
+}
+.daysbox{
+    display: flex;
+    flex-direction: column; 
+    position: relative; 
+    margin-left: 50px;
+    margin-bottom: 700px;
+    height: 50px;
+  background-color: blueviolet;
+width:50px;
+height: 270;
+border-radius: 20px;
+}
+  </style>
+  
+
+
+
+
+</body>
+
+
+
+
+
+
+
+
+<script>
+    function fnextpage(){
+        document.querySelector(".button2").addEventListener("click", function() {
+        window.location.href = "page2.html"; 
+    });
+    }
+// if(onclick="1"){
+//     var tasks="";
+//  for(var i=0;i>tasks.length;i++){
+
+
+function fadd(){
+    let inputelement = document.getElementById('2');
+    let inputvalue = inputelement.value.trim();
+    if (inputValue === "") {
+            alert("please enter a task");
+            return;
+        }
+        let table=document.querySelector(".tableclass");
+        let newrow = document.createElement("tr");
+        let taskCell = document.createElement("td");
+        let taskInput = document.createElement("input");
+    // document.querySelector(".button1").addEventListener("click", function() {
+        // for(var i=0;i>tasks.length;i++){}
+// });
+
+// }}
+
+function removetasks(){
+    document.querySelector(".button3").addEventListener("click", function() {
+        // delete()
+    });
+}
+
+function taskdone(){
+    document.querySelector(".button4").addEventListener("click", function() {
+       taskisdone();
+    });
+}
+
+// function delete(){
+
+// }
+
+function taskisdone(){
+    
+}
+// function time(){
+//     var d = new Date();
+// a = d.getDay();  
+// var h= new hour;
+// b=h.getHours();
+
+//     var countdownDate = new Date("").getTime();
+
+// var x = setInterval(function (){
+//     var now = new Date().getTime();
+
+//     var distance = countdownDate - now;
+
+
+
+function setTodayChecked() {
+    let today = new Date().getDay(); 
+    switch (today) {
+        case 6: 
+            document.getElementById("saturday").checked = true;
+            break;
+        case 0: 
+            document.getElementById("sunday").checked = true;
+            break;
+        case 1:
+            document.getElementById("monday").checked = true;
+            break;
+        case 2:
+            document.getElementById("tuesday").checked = true;
+            break;
+        case 3: 
+            document.getElementById("wednesday").checked = true;
+            break;
+        case 4: 
+            document.getElementById("thursday").checked = true;
+            break;
+        case 5: 
+            document.getElementById("friday").checked = true;
+            break;
+    }
+}
+
+document.addEventListener("DOMContentLoaded", setTodayChecked);
+}
+
+</script>
+</html>
