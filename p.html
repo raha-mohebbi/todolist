@@ -188,41 +188,94 @@ const days = ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چ
 function addtask() {
     if (inputbox.value === '') {
         alert("please type a task");
+        return;
     }
-    else {
+ let selectedDays=[];
+ document.querySelectorAll(".daysbox input:checked").forEach(checkedbox=>{selectedDays.push(checkedbox.parentNode.textContent.trim());
+});
+if (selectedDays.length===0){
+    alert("choose a day");
+    return;
+}
+
         let li = document.createElement("li");
-        li.innerHTML = myinputbox.value;
+        li.innerHTML = myinputbox.value +"<br>"+selectedDays.join(',');
 
-        let r = document.createElement("buttonf");
-        let removeicon = document.createElement("img");
-        removeicon.src = "icons8-delete-button-64.png";
-        removeicon.alt = "Delete";
-        r.appendChild(removeicon);
-        r.classList.add("task-button");
-        r.onclick = function () {
-            taskslist.removeChild(li);
-        }
+        let removeButton = document.createElement("button");
+    let removeIcon = document.createElement("img");
+    removeIcon.src = "icons8-delete-button-64.png"; 
+    removeIcon.alt = "Delete";
+    removeIcon.style.width = "20px"; 
+    removeIcon.style.height = "20px";
+    removeButton.appendChild(removeIcon);
+    removeButton.classList.add("task-button");
+    removeButton.onclick = function () {
+        taskslist.removeChild(li);
+    };
 
-        let d = document.createElement("buttonf");
-        let doneicon = document.createElement("img");
-        doneicon.src = "icons8-done-50.png";
-        doneicon.alt = "Done";
-        d.appendChild(doneicon);
-        d.classList.add('task-button');
-        d.onclick = function () {
-            li.style.textDecoration = "line-through";
-        }
-        li.appendChild(d);
-        li.appendChild(r);
-        taskslist.appendChild(li);
-        myinputbox.value = "";
+    let doneButton = document.createElement("button");
+    let doneIcon = document.createElement("img");
+    doneIcon.src = "icons8-done-50.png"; 
+    doneIcon.alt = "Done";
+    doneIcon.style.width = "20px"; 
+    doneIcon.style.height = "20px";
+    doneButton.appendChild(doneIcon);
+    doneButton.classList.add("task-button");
+    doneButton.onclick = function () {
+        li.style.textDecoration = "line-through";
+    };
 
-    }
+    li.appendChild(doneButton);
+    li.appendChild(removeButton);
+    taskslist.appendChild(li);
+
+    inputbox.value = "";
+    document.querySelectorAll(".daysbox input").forEach(checkbox => checkbox.checked = false);
 }
-function fnextpage() {
-    console.log("Button clicked! Redirecting...")
-    window.location.href = "page2.html";
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+//         let r = document.createElement("buttonf");
+//         let removeicon = document.createElement("img");
+//         removeicon.src = "icons8-delete-button-64.png";
+//         removeicon.alt = "Delete";
+//         r.appendChild(removeicon);
+//         r.classList.add("task-button");
+//         r.onclick = function () {
+//             taskslist.removeChild(li);
+//         }
+
+//         let d = document.createElement("buttonf");
+//         let doneicon = document.createElement("img");
+//         doneicon.src = "icons8-done-50.png";
+//         doneicon.alt = "Done";
+//         d.appendChild(doneicon);
+//         d.classList.add('task-button');
+//         d.onclick = function () {
+//             li.style.textDecoration = "line-through";
+//         }
+//         li.appendChild(d);
+//         li.appendChild(r);
+//         taskslist.appendChild(li);
+//         myinputbox.value = "";
+       
+//     }
+
+// function fnextpage() {
+//     window.location.href = "page2.html";
+// }
 
 
 // function setTodayChecked() {
