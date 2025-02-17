@@ -110,7 +110,7 @@ ul li {
     border-color: white;
     /* border-inline: 10px; */
     border-radius: 20px;
-    color: rgb(15, 15, 15);
+    color: rgb(7, 7, 7);
 
 }
 
@@ -190,18 +190,21 @@ function addtask() {
         alert("please type a task");
         return;
     }
- let selectedDays=[];
- document.querySelectorAll(".daysbox input:checked").forEach(checkedbox=>{selectedDays.push(checkedbox.parentNode.textContent.trim());
-});
-if (selectedDays.length===0){
-    alert("choose a day");
-    return;
-}
 
-        let li = document.createElement("li");
-        li.innerHTML = myinputbox.value +"<br>"+selectedDays.join(',');
+    let selectedDays = [];
+    document.querySelectorAll(".daysbox input:checked").forEach(checkbox => {
+        selectedDays.push(checkbox.parentNode.textContent.trim());
+    });
 
-        let removeButton = document.createElement("button");
+    if (selectedDays.length === 0) {
+        alert("choose a day");
+        return;
+    }
+
+    let li = document.createElement("li");
+    li.innerHTML = myinputbox.value + "<br>" + selectedDays.join(',');
+
+    let removeButton = document.createElement("button");
     let removeIcon = document.createElement("img");
     removeIcon.src = "icons8-delete-button-64.png"; 
     removeIcon.alt = "Delete";
@@ -229,8 +232,43 @@ if (selectedDays.length===0){
     li.appendChild(removeButton);
     taskslist.appendChild(li);
 
+    
+    let selectedIndexes = selectedDays.map(d => days.indexOf(d));
+    startTaskCountdown(li, selectedIndexes);
+
     inputbox.value = "";
     document.querySelectorAll(".daysbox input").forEach(checkbox => checkbox.checked = false);
+}
+
+       
+function startTaskCountdown(li, days) {
+    let now = new Date();
+    let today = now.getDay();
+    let minDiff = Math.min(...days.map(d => (d - today + 7) % 7 || 7));
+
+    let targetDate = new Date();
+    targetDate.setDate(now.getDate() + minDiff);
+    targetDate.setHours(0, 0, 0, 0);
+
+    let countdownDiv = document.createElement("div");
+    li.appendChild(countdownDiv);
+
+    let timer = setInterval(() => {
+        let diff = targetDate - new Date();
+        if (diff <= 0) {
+            clearInterval(timer);
+            countdownDiv.innerHTML = "time to do your task";
+            alert("time to do task" + li.textContent.split("\n")[0]);
+            return;
+        }
+
+        let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        countdownDiv.innerHTML =  days + " روز + " + hours + " ساعت + " + minutes + " دقیقه + " + seconds + " ثانیه";
+    }, 1000);
 }
 
 
@@ -240,13 +278,6 @@ if (selectedDays.length===0){
 
 
 
-
-
-
-
-
-
-        
 //         let r = document.createElement("buttonf");
 //         let removeicon = document.createElement("img");
 //         removeicon.src = "icons8-delete-button-64.png";
