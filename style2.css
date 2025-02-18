@@ -1,0 +1,17 @@
+.downloadbuttonclass{
+    border: none;
+    cursor: pointer;
+}
+.windowbackground {
+    width: 100%;
+    min-height: 100vh;
+    background-image: url(abstract-purple-red-gradient-blur-background-vector_53876-143419.avif);
+    padding: 10px;
+}
+.down{
+border-radius: 20px;
+} 
+
+.back{
+    border-radius: 20px;
+}
