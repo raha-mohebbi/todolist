@@ -1,0 +1,124 @@
+
+.windowbackground {
+    width: 100%;
+    min-height: 100vh;
+    background-image: url(abstract-purple-red-gradient-blur-background-vector_53876-143419.avif);
+    padding: 10px;
+}
+
+.cadrbackground {
+    width: 100%;
+    max-width: 540px;
+    margin: 100px auto 20px;
+    padding: 40px 30px 70px;
+    border-radius: 10px;
+    border-style: ridge;
+    border-radius: 50px;
+}
+
+.cadrbackground h1 {
+    color: black;
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    
+}
+
+.aroundinputbox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 30px;
+    padding-left: 20px;
+    margin-bottom: 25px;
+    border-style: groove;
+}
+
+input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 10px;
+    font-size: 20px;
+
+}
+
+.addbutton {
+    border: none;
+    outline: none;
+    padding: 16px 50px;
+    background: none;
+
+}
+
+ul li {
+    list-style: none;
+    font-size: 30px;
+    padding: 12px 8px 12px 50px;
+    user-select: none;
+    cursor: pointer;
+    font-family: Brush Script MT, cursive;
+    border: 2px;
+    border-style: dotted;
+    border-color: white;
+    border-radius: 20px;
+    color: rgb(7, 7, 7);
+
+}
+
+.task-button {
+    background: rgb(241, 240, 236);
+    cursor: pointer;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    padding: 10px; 
+    border-radius: 10px; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 10px; 
+    height: 10px;
+   position: relative;
+
+}
+
+.task-button img {
+    width: 20px;
+    height: 20px;
+    
+}
+
+
+.daysbox {
+    display: flex;
+    align-items: center;
+    background-image: url(153608996-abstract-watercolor-background-gradient-with-peach-color-light-orange-wallpaper-romantic.jpg);
+    margin-bottom: 30px;
+    margin-left: 0px;
+    margin-right: 50px;
+    flex-direction: column;
+    border-radius: 40px;
+    font-size: 30px;
+    font-family: 'Brush Script MT', cursive;
+    border-style: ridge;
+    color: rgb(23, 23, 24);
+    text-shadow: 50px;
+
+}
+
+.nextpageclass  {
+    margin-left: 510px;
+    border-radius: 20px;
+   border-color: aliceblue;
+}
+
+.addbutton img {
+    margin-left: 130px;
+
+}
+
+.addbutton {
+    cursor: pointer;
+}
