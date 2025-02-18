@@ -1,25 +1,19 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="fa">
 <head>
+   
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>report sheet</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="style2.css">
 </head>
 <body>
- <div class="div21">
-<button class="downloadbuttonclass" > <a href="report.pdf" download="report.pdf"></a>download </button>
- </div> 
-</body>
-
-<style>
-    .downloadbuttonclass{
-        border: none;
-        cursor: pointer;
-    }
-</style>
-
-
-<script>
-
-</script>
-</html>
+    <div  class="windowbackground">
+    <h2>report sheet</h2>
+    <ul id="doneTasksList"></ul>
+    <button onclick="downloadPDF()">dowload as PDF</button>
+    <button onclick="goback()">go back</button>
+</div>
+<script src="projectpage2.js"></script>
