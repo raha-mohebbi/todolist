@@ -36,17 +36,32 @@ function addtask() {
         taskslist.removeChild(li);
     };
 
-    let doneButton = document.createElement("button");
-    let doneIcon = document.createElement("img");
-    doneIcon.src = "icons8-done-50.png"; 
-    doneIcon.alt = "Done";
-    doneIcon.style.width = "20px"; 
-    doneIcon.style.height = "20px";
-    doneButton.appendChild(doneIcon);
-    doneButton.classList.add("task-button");
+    // let doneButton = document.createElement("button");
+    // let doneIcon = document.createElement("img");
+    // doneIcon.src = "icons8-done-50.png"; 
+    // doneIcon.alt = "Done";
+    // doneIcon.style.width = "20px"; 
+    // doneIcon.style.height = "20px";
+    // doneButton.appendChild(doneIcon);
+    // doneButton.classList.add("task-button");
+    // doneButton.onclick = function () {
+    //     li.style.textDecoration = "line-through";
+    // };
+
     doneButton.onclick = function () {
         li.style.textDecoration = "line-through";
-    };
+    
+        let doneTasks = JSON.parse(localStorage.getItem("doneTasks")) || [];
+        doneTasks.push({
+            task: myinputbox.value,
+            days: selectedDays.join(',')
+        });
+        localStorage.setItem("doneTasks", JSON.stringify(doneTasks));
+    }
+
+
+
+
 
     li.appendChild(doneButton);
     li.appendChild(removeButton);
@@ -89,4 +104,8 @@ function startTaskCountdown(li, days) {
 
         countdownDiv.innerHTML =  days + " روز + " + hours + " ساعت + " + minutes + " دقیقه + " + seconds + " ثانیه";
     }, 1000);
+}
+function fnextpage(){
+    
+        window.location.href = "page2.html";
 }
