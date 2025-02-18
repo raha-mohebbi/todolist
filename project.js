@@ -36,18 +36,15 @@ function addtask() {
         taskslist.removeChild(li);
     };
 
-    // let doneButton = document.createElement("button");
-    // let doneIcon = document.createElement("img");
-    // doneIcon.src = "icons8-done-50.png"; 
-    // doneIcon.alt = "Done";
-    // doneIcon.style.width = "20px"; 
-    // doneIcon.style.height = "20px";
-    // doneButton.appendChild(doneIcon);
-    // doneButton.classList.add("task-button");
-    // doneButton.onclick = function () {
-    //     li.style.textDecoration = "line-through";
-    // };
-
+    let doneButton = document.createElement("button");
+    let doneIcon = document.createElement("img");
+    doneIcon.src = "icons8-done-50.png"; 
+    doneIcon.alt = "Done";
+    doneIcon.style.width = "20px"; 
+    doneIcon.style.height = "20px";
+    doneButton.appendChild(doneIcon);
+    doneButton.classList.add("task-button");
+   
     doneButton.onclick = function () {
         li.style.textDecoration = "line-through";
     
