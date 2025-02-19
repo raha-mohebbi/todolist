@@ -107,18 +107,21 @@ function fnextpage(){
     
         window.location.href = "page2.html";
 }
-window.onload= function(){
-    if(localStorage.getItem('taskslist')){
-        taskslist.innerHTML=localStorage.getItem('taskslist');
+window.onload = function () {
+    if (localStorage.getItem('taskslist')) {
+        taskslist.innerHTML = localStorage.getItem('taskslist');
 
-        document.querySelectorAll("#tasks li button").forEach(button=>{button.onclick=function(){
-            if(this.alt==="delete"){
-                this.parentElement.remove();
-            }else if(this.alt==="done"){
-                this.parentElement.style.textDecoration="line-through";
-            }
+        document.querySelectorAll("#tasks li button").forEach(button => {
+            button.onclick = function () {
+                let img = this.querySelector("img"); 
 
-            localStorage.setItem('taskslist',taskslist.innerHTML);
+                if (img && img.alt === "Delete") {
+                    this.parentElement.remove(); 
+                } else if (img && img.alt === "Done") {
+                    this.parentElement.style.textDecoration = "line-through";
+                }
+
+                localStorage.setItem('taskslist', taskslist.innerHTML);
             };
         });
     }
