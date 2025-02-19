@@ -48,7 +48,8 @@ function addtask() {
    
     doneButton.onclick = function () {
         li.style.textDecoration = "line-through";
-    
+        localStorage.setItem('taskslist', taskslist.innerHTML); // ✅ ذخیره تغییرات بعد از انجام تسک**
+    };
         let doneTasks = JSON.parse(localStorage.getItem("doneTasks")) || [];
         doneTasks.push({
             task: myinputbox.value,
@@ -64,14 +65,14 @@ function addtask() {
     li.appendChild(doneButton);
     li.appendChild(removeButton);
     taskslist.appendChild(li);
-
+    localStorage.setItem('taskslist', taskslist.innerHTML); // ✅ ذخیره تغییرات بعد از اضافه کردن تس
     
     let selectedIndexes = selectedDays.map(d => days.indexOf(d));
     startTaskCountdown(li, selectedIndexes);
 
     inputbox.value = "";
     document.querySelectorAll(".daysbox input").forEach(checkbox => checkbox.checked = false);
-}
+
 
        
 function startTaskCountdown(li, days) {
@@ -107,22 +108,4 @@ function fnextpage(){
     
         window.location.href = "page2.html";
 }
-window.onload = function () {
-    if (localStorage.getItem('taskslist')) {
-        taskslist.innerHTML = localStorage.getItem('taskslist');
 
-        document.querySelectorAll("#tasks li button").forEach(button => {
-            button.onclick = function () {
-                let img = this.querySelector("img"); 
-
-                if (img && img.alt === "Delete") {
-                    this.parentElement.remove(); 
-                } else if (img && img.alt === "Done") {
-                    this.parentElement.style.textDecoration = "line-through";
-                }
-
-                localStorage.setItem('taskslist', taskslist.innerHTML);
-            };
-        });
-    }
-};
