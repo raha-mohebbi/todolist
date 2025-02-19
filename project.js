@@ -1,4 +1,5 @@
 
+
 const myinputbox = document.getElementById("inputbox");
 const taskslist = document.getElementById("tasks");
 const removebutton = document.getElementById("deletebuttonid");
@@ -10,7 +11,7 @@ function addtask() {
         alert("please type a task");
         return;
     }
-
+    localStorage.setItem('taskslist',tasklist.innerHTML);
     let selectedDays = [];
     document.querySelectorAll(".daysbox input:checked").forEach(checkbox => {
         selectedDays.push(checkbox.parentNode.textContent.trim());
@@ -105,4 +106,9 @@ function startTaskCountdown(li, days) {
 function fnextpage(){
     
         window.location.href = "page2.html";
+}
+window.onload= function(){
+    if(localStorage.getItem('taskslist')){
+        taskslist.innerHTML=localStorage.getItem('taskslist');
+    }
 }
