@@ -1,17 +1,20 @@
-
+localStorage.setItem('li', 'inputbox.value');
+localStorage.getItem('li');
 
 const myinputbox = document.getElementById("inputbox");
 const taskslist = document.getElementById("tasks");
-const removebutton = document.getElementById("deletebuttonid");
-const donebutton = document.getElementById("donebuttonid");
 const days = ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه"];
+
+window.onload = function () {
+    loadTasks();
+};
 
 function addtask() {
     if (inputbox.value === '') {
         alert("please type a task");
         return;
     }
-    localStorage.setItem('taskslist',tasklist.innerHTML);
+
     let selectedDays = [];
     document.querySelectorAll(".daysbox input:checked").forEach(checkbox => {
         selectedDays.push(checkbox.parentNode.textContent.trim());
@@ -22,59 +25,80 @@ function addtask() {
         return;
     }
 
+    let taskData = {
+        task: myinputbox.value,
+        days: selectedDays
+    };
+
+    saveTaskToLocalStorage(taskData);
+    addTaskTo(taskData);
+
+    myinputbox.value = "";
+    document.querySelectorAll(".daysbox input").forEach(checkbox => checkbox.checked = false);
+}
+
+function saveTaskToLocalStorage(task) {
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    tasks.push(task);
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function addTaskTo(taskData) {
     let li = document.createElement("li");
-    li.innerHTML = myinputbox.value + "<br>" + selectedDays.join(',');
+    li.innerHTML = myinputbox.value + "<br>" + taskData.days.join(',');
 
     let removeButton = document.createElement("button");
     let removeIcon = document.createElement("img");
-    removeIcon.src = "icons8-delete-button-64.png"; 
+    removeIcon.src = "icons8-delete-button-64.png";
     removeIcon.alt = "Delete";
-    removeIcon.style.width = "20px"; 
+    removeIcon.style.width = "20px";
     removeIcon.style.height = "20px";
     removeButton.appendChild(removeIcon);
     removeButton.classList.add("task-button");
     removeButton.onclick = function () {
         taskslist.removeChild(li);
+        removeTaskFromLocalStorage(taskData);
     };
 
     let doneButton = document.createElement("button");
     let doneIcon = document.createElement("img");
-    doneIcon.src = "icons8-done-50.png"; 
+    doneIcon.src = "icons8-done-50.png";
     doneIcon.alt = "Done";
-    doneIcon.style.width = "20px"; 
+    doneIcon.style.width = "20px";
     doneIcon.style.height = "20px";
     doneButton.appendChild(doneIcon);
     doneButton.classList.add("task-button");
-   
+
     doneButton.onclick = function () {
         li.style.textDecoration = "line-through";
-        localStorage.setItem('taskslist', taskslist.innerHTML); // ✅ ذخیره تغییرات بعد از انجام تسک**
+        markTaskAsDone(taskData);
     };
-        let doneTasks = JSON.parse(localStorage.getItem("doneTasks")) || [];
-        doneTasks.push({
-            task: myinputbox.value,
-            days: selectedDays.join(',')
-        });
-        localStorage.setItem("doneTasks", JSON.stringify(doneTasks));
-    }
-
-
-
-
 
     li.appendChild(doneButton);
     li.appendChild(removeButton);
     taskslist.appendChild(li);
-    localStorage.setItem('taskslist', taskslist.innerHTML); // ✅ ذخیره تغییرات بعد از اضافه کردن تس
-    
-    let selectedIndexes = selectedDays.map(d => days.indexOf(d));
+
+    let selectedIndexes = taskData.days.map(d => days.indexOf(d));
     startTaskCountdown(li, selectedIndexes);
+}
 
-    inputbox.value = "";
-    document.querySelectorAll(".daysbox input").forEach(checkbox => checkbox.checked = false);
+function removeTaskFromLocalStorage(taskToRemove) {
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    tasks = tasks.filter(task => task.task !== taskToRemove.task);
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
 
+function markTaskAsDone(taskData) {
+    let doneTasks = JSON.parse(localStorage.getItem("doneTasks")) || [];
+    doneTasks.push(taskData);
+    localStorage.setItem("doneTasks", JSON.stringify(doneTasks));
+}
 
-       
+function loadTasks() {
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    tasks.forEach(task => addTaskTo(task));
+}
+
 function startTaskCountdown(li, days) {
     let now = new Date();
     let today = now.getDay();
@@ -92,7 +116,7 @@ function startTaskCountdown(li, days) {
         if (diff <= 0) {
             clearInterval(timer);
             countdownDiv.innerHTML = "time to do your task";
-            alert("time to do task" + li.textContent.split("\n")[0]);
+            alert("time to do task " + li.textContent.split("\n")[0]);
             return;
         }
 
@@ -101,11 +125,10 @@ function startTaskCountdown(li, days) {
         let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         let seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-        countdownDiv.innerHTML =  days + " روز + " + hours + " ساعت + " + minutes + " دقیقه + " + seconds + " ثانیه";
+        countdownDiv.innerHTML = days + " days " + hours + " hours " + minutes + " minutes " + seconds + " seconds";
     }, 1000);
 }
-function fnextpage(){
-    
-        window.location.href = "page2.html";
-}
 
+function fnextpage() {
+    window.location.href = "page2.html";
+}
