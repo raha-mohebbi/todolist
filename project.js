@@ -110,5 +110,16 @@ function fnextpage(){
 window.onload= function(){
     if(localStorage.getItem('taskslist')){
         taskslist.innerHTML=localStorage.getItem('taskslist');
+
+        document.querySelectorAll("#tasks li button").forEach(button=>{button.onclick=function(){
+            if(this.alt==="delete"){
+                this.parentElement.remove();
+            }else if(this.alt==="done"){
+                this.parentElement.style.textDecoration="line-through";
+            }
+
+            localStorage.setItem('taskslist',taskslist.innerHTML);
+            };
+        });
     }
-}
+};
