@@ -93,19 +93,23 @@ ul li {
 
 .daysbox {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
     background-image: url(153608996-abstract-watercolor-background-gradient-with-peach-color-light-orange-wallpaper-romantic.jpg);
     margin-bottom: 30px;
     margin-left: 0px;
     margin-right: 50px;
-    flex-direction: column;
     border-radius: 40px;
     font-size: 30px;
     font-family: 'Brush Script MT', cursive;
     border-style: ridge;
     color: rgb(23, 23, 24);
     text-shadow: 50px;
-
+    max-height: 200px; 
+    overflow-y: auto; 
+    padding: 10px;
+    width: 100%;
 }
 
 .nextpageclass  {
