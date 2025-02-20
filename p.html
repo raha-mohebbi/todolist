@@ -1,47 +1,50 @@
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>to do list</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<link rel="stylesheet" href="style.css">
 <body>
-<div class="windowbackground">
-    
-    <div class="cadrbackground">
-        <div class="div2">
-            <button id="next" class="nextpageclass" onclick="fnextpage()"><img src="icons8-next-key-24.png"></button>
-        </div>
-        <h1>To Do List</h1>
-      
-        <div class="aroundinputbox">
-            <input type="text" id="inputbox" placeholder="add your task">
 
-            <button class="addbutton" onclick="addtask()"><img src="icons8-add-64.png" alt="add"></button>
-        </div>
-
-        <ul id="tasks">
-            <div class="daysbox">
-                <label><input type="checkbox" onclick="startTimer('شنبه', 6)">saturday</label>
-                <label><input type="checkbox" onclick="startTimer('یکشنبه', 0)"> sunday</label>
-                <label><input type="checkbox" onclick="startTimer('دوشنبه', 1)"> monday</label>
-                <label><input type="checkbox" onclick="startTimer('سه‌شنبه', 2)"> tuesday</label>
-                <label><input type="checkbox" onclick="startTimer('چهارشنبه', 3)"> wednesday</label>
-                <label><input type="checkbox" onclick="startTimer('پنج‌شنبه', 4)"> thursday</label>
-                <label><input type="checkbox" onclick="startTimer('جمعه', 5)"> friday</label>
-
+    <div class="windowbackground">
+        <div class="cadrbackground">
+            <div class="div2">
+                <button id="next" class="nextpageclass" onclick="fnextpage()">
+                    <img src="icons8-next-key-24.png">
+                </button>
             </div>
-        </ul>
-        <div id="timers"></div>
+            
+            <div class="daysbox">
+                <label><input type="checkbox" onclick="startTimer('شنبه', 6)"> Saturday</label>
+                <label><input type="checkbox" onclick="startTimer('یکشنبه', 0)"> Sunday</label>
+                <label><input type="checkbox" onclick="startTimer('دوشنبه', 1)"> Monday</label>
+                <label><input type="checkbox" onclick="startTimer('سه‌شنبه', 2)"> Tuesday</label>
+                <label><input type="checkbox" onclick="startTimer('چهارشنبه', 3)"> Wednesday</label>
+                <label><input type="checkbox" onclick="startTimer('پنج‌شنبه', 4)"> Thursday</label>
+                <label><input type="checkbox" onclick="startTimer('جمعه', 5)"> Friday</label>
+            </div>
+
+           
+            <div class="aroundinputbox">
+                <input type="text" id="inputbox" placeholder="Add your task">
+                <button class="addbutton" onclick="addtask()"><img src="icons8-add-64.png" alt="Add"></button>
+            </div>
+
+            
+            <ul id="tasks"></ul>
+
+            <!-- <div class="div2">
+                <button id="next" class="nextpageclass" onclick="fnextpage()">
+                    <img src="icons8-next-key-24.png">
+                </button>
+            </div> -->
+
+            <div id="timers"></div>
+        </div>
     </div>
 
-</div>
-
-
-</body>
-
 <script src="project.js"></script>
-
+</body>
 </html>

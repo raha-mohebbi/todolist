@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     doneTasks.forEach(task => {
         let li = document.createElement("li");
-        li.textContent = `task: ${task.task} - روزها: ${task.days}`;
+        li.textContent = `task: ${task.task} - days: ${task.days}`;
         ul.appendChild(li);
     });
 });

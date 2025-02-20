@@ -1,6 +1,33 @@
-.downloadbuttonclass{
+.down{
     border: none;
+   
+    background: none;
     cursor: pointer;
+    width: 150px;
+    height: 100px;
+    margin-left: 50px;
+    
+}
+.back{
+    border: none;
+    
+    background: none;
+    cursor: pointer;
+    width: 150px;
+    height: 50px;
+    margin-left: 100px;
+
+}
+
+.divc {
+    border: 3px  rgb(253, 253, 253); 
+    border-style: dotted;
+    border-radius: 10px; 
+    padding: 10px; 
+    display: inline-block; 
+    margin-bottom: 100px;
+    margin-top: 200px;
+    margin-left: 400px;
 }
 .windowbackground {
     width: 100%;
@@ -14,4 +41,9 @@ border-radius: 20px;
 
 .back{
     border-radius: 20px;
+}
+.ulclass{
+
+    margin-bottom: 200px;
+    margin-left: 520px;
 }

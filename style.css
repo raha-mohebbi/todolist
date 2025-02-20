@@ -31,8 +31,10 @@
     background-color: white;
     border-radius: 30px;
     padding-left: 20px;
-    margin-bottom: 25px;
     border-style: groove;
+    width: 100%;
+    margin-top: 10px; 
+    margin-bottom: 20px; 
 }
 
 input {
@@ -97,23 +99,38 @@ ul li {
     align-items: center;
     justify-content: flex-start;
     background-image: url(153608996-abstract-watercolor-background-gradient-with-peach-color-light-orange-wallpaper-romantic.jpg);
-    margin-bottom: 30px;
-    margin-left: 0px;
-    margin-right: 50px;
     border-radius: 40px;
     font-size: 30px;
     font-family: 'Brush Script MT', cursive;
-    border-style: ridge;
+    border-style: ridge; 
     color: rgb(23, 23, 24);
-    text-shadow: 50px;
     max-height: 200px; 
     overflow-y: auto; 
     padding: 10px;
     width: 100%;
+    margin-bottom: 20px; 
+    
+}
+
+.daysbox::-webkit-scrollbar {
+    width: 10px;
+    
+}
+
+.daysbox::-webkit-scrollbar-track {
+    background:none; 
+    border-radius: 50px;
+
+}
+
+.daysbox::-webkit-scrollbar-thumb {
+    background: white; 
+    border-radius: 50px; 
 }
 
 .nextpageclass  {
-    margin-left: 510px;
+    margin-left: 520px;
+    margin-bottom: 50PX;
     border-radius: 20px;
    border-color: aliceblue;
 }
